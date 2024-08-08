@@ -1,6 +1,6 @@
 import datetime
 import pytest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 from app.main import outdated_products
 
 
@@ -86,7 +86,7 @@ class TestProductsDate:
     )
     @patch("app.main.datetime")
     def test_outdated_products(self,
-                               mock_datetime,
+                               mock_datetime: Mock,
                                products: list,
                                expected: list) -> None:
         mock_datetime.date.today.return_value = datetime.date(2022, 8, 8)
